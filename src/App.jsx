@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Header from './components/Header'
+import Form from './components/Form'
+import Resume from './components/Resume'
+import { Dwight_Schrute , Kushal} from './components/data'
 import './App.css'
+import './styles/fonts.css'
+import { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+export default function App() {
+  console.log(Dwight_Schrute);
+  const [resumeData, setResumeData] = useState({ ...Dwight_Schrute });
+  return <>
+    <Header />
+    <div id="content">
+      <div id="UI">
+        <Form resumeData={resumeData} setResumeData={setResumeData}/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Resume {...resumeData} />
+    </div>
+  </>
 }
 
-export default App
+

@@ -1,0 +1,84 @@
+.resume .link-container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.resume .link-container .icon{
+    width: 15px;
+}
+
+.resume{
+    background: white;
+    color: black;
+    display: block;
+    margin: 1cm auto;
+    padding: 2cm;
+    width: 21cm;
+    aspect-ratio: 1/1.414;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-family: "Inclusive Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+
+.resume h1{
+    font-family: "Cutive Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+}
+
+.resume h2{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.resume h3{
+    font-weight: 600;
+}
+
+.resume strong{
+    font-weight: 500;
+}
+
+.resume em{
+    font-weight: 500;
+}
+
+.resume a{
+    /* font-family: "Cutive Mono", serif; */
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+}
+
+.resume a:hover{
+    text-decoration: underline;
+}
+
+.resume section{
+    margin-bottom: 1mm;
+
+}
+
+.horizontal-list-container {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.horizontal-list-container ul, .horizontal-list-container ol{
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 3ch;
+}
+
+.resume .right-segment{
+    font-weight: 500;
+}
+
+.resume .sub-segment{
+    margin: 1mm 0;
+}

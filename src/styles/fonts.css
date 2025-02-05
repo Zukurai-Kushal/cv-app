@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.cutive-mono-regular {
+    font-family: "Cutive Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.newsreader {
+    font-family: "Newsreader", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.inclusive-sans {
+    font-family: "Inclusive Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
