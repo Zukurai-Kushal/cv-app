@@ -1,0 +1,109 @@
+.form-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 1cm;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form h1{
+    margin: 10px 0;
+}
+
+.form-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+#personal-detail-form strong{
+    width: 20ch;
+}
+
+.edit-button > .icon{
+    opacity: 0;
+    scale: 0;
+    width: 18px;
+    position: relative;
+    top: -5px;
+    right: -5px;
+    transition: 0.1s;
+}
+
+.edit-button:hover{
+    font-weight: 600;
+}
+
+.edit-button:hover >.icon {
+    display: block;
+    scale: 100%;
+    opacity: 100%;
+}
+
+.hide-side-buttons .form-side-buttons{
+    display: none;
+}
+
+.hide-side-buttons:hover .form-side-buttons{
+    display: flex;
+}
+
+.form-side-buttons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 600;
+    color: dimgray;
+}
+
+.form-side-buttons button svg{
+    fill: dimgray;
+}
+
+.form-content input{
+    flex: auto;
+}
+
+textarea, input{
+    padding: 5px;
+}
+
+.strike-through *{
+    text-decoration: line-through;
+}
+
+.form-header-button, .form-side-buttons button, .edit-button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: currentColor;
+}
+
+.form-side-buttons button:hover{
+    /* background-color: black; */
+    color: black;
+    font-weight: 600;
+}
+
+.form-side-buttons button svg{
+    color: currentColor;
+}
+
+.form-side-buttons button:hover svg {
+    fill: black;
+}
+
+.form-side-buttons .icon{
+    width: 20px;
+}
+

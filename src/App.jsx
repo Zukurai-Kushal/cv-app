@@ -7,7 +7,6 @@ import './styles/fonts.css'
 import { useState } from 'react'
 
 export default function App() {
-  console.log(Dwight_Schrute);
   const [resumeData, setResumeData] = useState({ ...Dwight_Schrute });
   return <>
     <Header />

@@ -3,18 +3,33 @@ export const Dwight_Schrute = {
   email: "dwight_schrute@dundermifflin.com",
   phone: "1-800-984-3672",
   linkedIn: "https://www.linkedin.com/in/dwight-schrute-42534844/",
-  links: [
-    { id: "0", value: "https://theoffice.fandom.com/wiki/Dwight_Schrute" },
-  ],
+  address: "Scranton, Pennsylvania, USA",
+  link: "https://theoffice.fandom.com/wiki/Dwight_Schrute",
 
-  objective:
-    "I am a dedicated and hardworking Assistant to the Regional Manager at Dunder Mifflin. With a strong background in sales and a passion for beet farming, I strive to achieve excellence in all my endeavors. My goal is to become the Regional Manager and lead the Scranton branch to new heights.",
+  objective: {
+    value:
+      "I am a dedicated and hardworking Assistant to the Regional Manager at Dunder Mifflin. With a strong background in sales and a passion for beet farming, I strive to achieve excellence in all my endeavors. My goal is to become the Regional Manager and lead the Scranton branch to new heights.",
+  },
 
   skills: {
-    technologies: [],
-    tools: [],
-    softSkills: ["Leadership", "Sales"],
-    others: ["Beet Farming", "Martial Arts", "Expert RuneScape Player"],
+    showGrouping: true,
+    groups: {
+      1: {
+        group: "Soft Skills",
+        skillList: [
+          { id: "0", value: "Leadership", hidden: false },
+          { id: "1", value: "Sales", hidden: false },
+        ],
+      },
+      2: {
+        group: "Others",
+        skillList: [
+          { id: "2", value: "Beet Farming", hidden: false },
+          { id: "3", value: "Martial Arts", hidden: false },
+          { id: "4", value: "Expert RuneScape Player", hidden: false },
+        ],
+      },
+    },
   },
 
   education: [
@@ -91,7 +106,7 @@ export const Dwight_Schrute = {
       "Conversational in Germen",
       "Fluent in Klingon",
     ],
-    hobbies: ["Bear watching"],
+    hobbies: ["Bear Watching"],
   },
 };
 

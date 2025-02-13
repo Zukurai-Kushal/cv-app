@@ -12,7 +12,6 @@
     background: white;
     color: black;
     display: block;
-    margin: 1cm auto;
     padding: 2cm;
     width: 21cm;
     aspect-ratio: 1/1.414;
@@ -48,8 +47,7 @@
     font-weight: 500;
 }
 
-.resume a{
-    /* font-family: "Cutive Mono", serif; */
+.resume a, .resume .link-container{
     text-decoration: none;
     color: black;
     font-size: 10px;
@@ -62,17 +60,6 @@
 .resume section{
     margin-bottom: 1mm;
 
-}
-
-.horizontal-list-container {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-}
-
-.horizontal-list-container ul, .horizontal-list-container ol{
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: 3ch;
 }
 
 .resume .right-segment{
