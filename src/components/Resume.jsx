@@ -11,9 +11,9 @@ import { Fragment } from "react"
 
 function RightSideSegment({ startDate, endDate, address, link}) {
   return <>
-    {startDate ? <div>{startDate + " - " + endDate}</div>: <div>{endDate}</div>}
-    {address ? <div><address>{address}</address></div> : null}
-    {link ? <div><a href={link} target="_blank" title="link">{link}</a></div>:null}
+    {startDate ? <div>{startDate + " - " + (endDate ? endDate:"Present")}</div>: <div>{endDate}</div>}
+    {address && <div><address>{address}</address></div>}
+    {link && <div><a href={link} target="_blank" title="link">{link}</a></div>}
   </>
 }
 
@@ -34,61 +34,75 @@ function ExperienceSegment({company, startDate, endDate, title, address, tasks})
   </div>;
 }
 
-function EducationSegment({ institution, startDate, endDate, degree, subject, address, gpa, extras, coursework }) {
+function EducationSegment({ institution, startDate, endDate, degree, subject, address, gpa, extras, coursework, hidden }) {
+  if (hidden) {
+    return;
+  }
+  let relevantCoursework = [];
+  if (coursework) {
+    relevantCoursework = Object.values(coursework).filter((courseworkObj) => !courseworkObj.hidden);
+  }
   return <div className="sub-segment">
     <div className="flex-apart">
       <div className="left-segment">
         <h3>{institution}</h3>
         <div>
           <strong>{degree}</strong>
-          <em>{subject? " ("+subject+")" : null}</em>
+          <em>{subject && " ("+subject+")"}</em>
         </div>
       </div>
       <div className="right-segment">
         <RightSideSegment startDate={startDate} endDate={endDate} address={address}/>
       </div>
     </div>
-    <div>{gpa ? "GPA: " + gpa : null}</div>
-    {extras ? extras.map((extra) => <div key={extra}><i>{"* "+extra}</i></div>) : null}
+    <div>{gpa && "GPA: " + gpa}</div>
+    
+    {extras && Object.values(extras).map((extraObj) => !extraObj.hidden && <div key={extraObj.id}><i>{"* " + extraObj.title}</i></div>)}
 
     <div className="two-col-grid">
-      {coursework && coursework.length > 0 ? <><label>Relevant Coursework:</label><ul className="horizontal-list">{coursework.map((course) => <li key={course}>{course}</li>)}</ul></>:null}
+      {relevantCoursework.length > 0 && 
+        <>
+          <label>Relevant Coursework:</label>
+          <ul className="horizontal-list">
+            {relevantCoursework.map((courseObj) => <li key={courseObj.id}>{courseObj.title}</li>)}
+          </ul>
+        </>
+      }
     </div>
-    </div>;
+  </div>;
 }
 
-function ProjectSegment({ project, endDate, tasks ,link }) {
+function ProjectSegment({ title, endDate, accomplishments ,link }) {
   return <div className="sub-segment">
     <div className="flex-apart">
       <div className="left-segment">
-        <h3>{project}</h3>
+        <h3>{title}</h3>
       </div>
       <div className="right-segment">
         <RightSideSegment endDate={endDate} link={link}/>
       </div>
     </div>
     <ul>
-      {tasks.map((task) => <li key={task}>{task}</li>)}
+      {Object.values(accomplishments).map((accomplishmentObj) => <li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
     </ul>
   </div>
 }
 
 function Skills({ skills }) {
-
-  return (skills.showGrouping ?
-    <div className="two-col-grid">
-      {Object.values(skills.groups).map((groupObj) => <Fragment key={groupObj.group}>
-        <label>{groupObj.group}</label>
-        <ul className="horizontal-list">
-          {groupObj.skillList.filter((skill) => !skill.hidden).map((skill) => <li key={skill.id}>{skill.value}</li>)}
-        </ul>
-      </Fragment>)}
-    </div>
-    : <ul className="horizontal-list">
-      {Object.values(skills.groups).map((groupObj) => <Fragment key={groupObj.group}>
-          {groupObj.skillList.filter((skill) => !skill.hidden).map((skill) => <li key={skill.id}>{skill.value}</li>)}
-      </Fragment>)}
-    </ul>);
+  return (skills.showGrouping ? <div className="two-col-grid">
+    {skills.root.childIds.map((groupId) => !skills[groupId].hidden && <Fragment key={groupId}>
+      <label>{skills[groupId].title}</label>
+      <ul className="horizontal-list">
+        {skills[groupId].childIds.map((skillId) => (!skills[skillId].hidden && <li key={skillId}>{skills[skillId].title}</li>))}
+      </ul>
+    </Fragment>)}
+  </div>
+    : <ul className="horizontal-list" style={{paddingLeft:"3ch"}}>
+      {skills.root.childIds.map((groupId) => !skills[groupId].hidden && skills[groupId].childIds.map((skillId) =>
+        !skills[skillId].hidden && <li key={skillId}>{skills[skillId].title}</li>
+      ))}
+    </ul>
+  )
 }
 
 export default function Resume({ fullName, email, phone, address, github, linkedIn, link, objective, skills, education, projects, experience, additional }) {
@@ -98,71 +112,71 @@ export default function Resume({ fullName, email, phone, address, github, linked
       <div className="flex-apart">
         <h1>{fullName}</h1>
         <div className="links">
-          {email ? <a href={"mailto:" + email} title="Email" className="link-container"><Icon src={emailIcon}/>{email}</a> : null}
-          {phone ? <a href={"tel:" + phone} title="Phone Number" className="link-container"><Icon src={phoneIcon} />{phone}</a> : null}
-          {address ? <address className="link-container"><Icon src={addressIcon}/> {address}</address>:null}
-          {github ? <a href={github} target="_blank" title="Github Profile" className="link-container"><Icon src={githubLogo}/>{github.replace(/(^\w+:|^)\/\//, '')}</a> : null}
-          {linkedIn ? <a href={linkedIn} target="_blank" title="LinkedIn Profile" className="link-container"><Icon src={linkedInLogo}/>{linkedIn.replace(/(^\w+:|^)\/\/www./, '')}</a> : null}
-          {link ? <a href={link} target="_blank" title="Personal Website" className="link-container"><Icon src={linkIcon} />{link}</a> : null}
+          {email && <a href={"mailto:" + email} title="Email" className="link-container"><Icon src={emailIcon}/>{email}</a>}
+          {phone && <a href={"tel:" + phone} title="Phone Number" className="link-container"><Icon src={phoneIcon} />{phone}</a>}
+          {address && <address className="link-container"><Icon src={addressIcon}/> {address}</address>}
+          {github && <a href={github} target="_blank" title="Github Profile" className="link-container"><Icon src={githubLogo}/>{github.replace(/(^\w+:|^)\/\//, '')}</a>}
+          {linkedIn && <a href={linkedIn} target="_blank" title="LinkedIn Profile" className="link-container"><Icon src={linkedInLogo}/>{linkedIn.replace(/(^\w+:|^)\/\/www./, '')}</a>}
+          {link && <a href={link} target="_blank" title="Personal Website" className="link-container"><Icon src={linkIcon} />{link}</a>}
         </div>
       </div>
 
-      {objective && !objective.hidden ?
+      {objective && !objective.hidden &&
         <section>
           <h2>Objective</h2>
           <hr />
           <p>{objective.value}</p>
         </section>
-        : null}
+      }
       
-      {skills && !skills.hidden ? <section>
+      {skills && !skills.hidden && <section>
         <h2>Skills</h2>
         <hr />
         <Skills skills={skills} />
-      </section> : null}
+      </section>}
   
-      {education && !education.hidden ? <section>
+      {education && !education.hidden && <section>
         <h2>Education</h2>
         <hr />
-        {education.map((educationSegment) => <EducationSegment {...educationSegment} key={educationSegment.institution}/>)}
-      </section> : null}
+        {education.root.childIds.map((educationId) => <EducationSegment {...education[educationId]} key={educationId}/>)}
+      </section>}
       
-      {projects && !projects.hidden ? <section>
+      {projects && !projects.hidden && <section>
         <h2>Projects</h2>
         <hr />
-        {projects.map((project) => <ProjectSegment {...project} key={project.project}/>)}
-      </section> : null}
+        {projects.root.childIds.map((projectId) => <ProjectSegment {...projects[projectId]} key={projectId} />)}
+      </section>}
     
-      {experience && !experience.hidden ? <section>
+      {experience && !experience.hidden && <section>
         <h2>Work Experience</h2>
         <hr />
         {experience.map((experienceSegment) => <ExperienceSegment {...experienceSegment} key={experienceSegment.company}/>)}
-      </section> : null}
+      </section>}
       
-      {additional && !additional.hidden ? <section>
+      {additional && !additional.hidden && <section>
         <h2>Additional</h2>
         <hr />
         <div className="two-col-grid">
-          {additional.languages && additional.languages.length > 0 ? <>
+          {additional.languages && additional.languages.length > 0 && <>
             <label>Languages:</label>
             <ul className="horizontal-list">
               {additional.languages.map((language) => <li key={language}>{language}</li>)}
             </ul>
-          </> : null}
-          {additional.certifications && additional.certifications.length > 0 ? <>
+          </>}
+          {additional.certifications && additional.certifications.length > 0 && <>
             <label>Certifications:</label>
             <ul className="horizontal-list">
               {additional.certifications.map((certification) => <li key={certification}>{certification}</li>)}
             </ul>
-          </> : null}
-          {additional.hobbies && additional.hobbies.length > 0 ? <>
+          </>}
+          {additional.hobbies && additional.hobbies.length > 0 && <>
             <label>Hobbies:</label>
             <ul className="horizontal-list">
               {additional.hobbies.map((hobby) => <li key={hobby}>{hobby}</li>)}
             </ul>
-          </> : null}
+          </>}
         </div>
-      </section>:null}
+      </section>}
     </div>
   );
 }

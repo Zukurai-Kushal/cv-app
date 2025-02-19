@@ -13,27 +13,57 @@ export const Dwight_Schrute = {
 
   skills: {
     showGrouping: true,
-    groups: {
-      1: {
-        group: "Soft Skills",
-        skillList: [
-          { id: "0", value: "Leadership", hidden: false },
-          { id: "1", value: "Sales", hidden: false },
-        ],
-      },
-      2: {
-        group: "Others",
-        skillList: [
-          { id: "2", value: "Beet Farming", hidden: false },
-          { id: "3", value: "Martial Arts", hidden: false },
-          { id: "4", value: "Expert RuneScape Player", hidden: false },
-        ],
-      },
+    root: {
+      id: "root",
+      title: "(Root)",
+      childIds: [1, 2],
+    },
+    1: {
+      id: 1,
+      title: "Soft Skills",
+      hidden: false,
+      childIds: [3, 4],
+    },
+    2: {
+      id: 2,
+      title: "Others",
+      childIds: [5, 6, 7],
+    },
+    3: {
+      id: 3,
+      title: "Leadership",
+      childIds: [],
+    },
+    4: {
+      id: 4,
+      title: "Sales",
+      childIds: [],
+    },
+    5: {
+      id: 5,
+      title: "Beet Farming",
+      childIds: [],
+    },
+    6: {
+      id: 6,
+      title: "Martial Arts",
+      childIds: [],
+    },
+    7: {
+      id: 7,
+      title: "Expert RuneScape Player",
+      childIds: [],
     },
   },
 
-  education: [
-    {
+  education: {
+    root: {
+      id: "root",
+      title: "(Root)",
+      childIds: [1, 2],
+    },
+    1: {
+      id: 1,
       institution: "Pennsylvania State University",
       startDate: "1993",
       endDate: "1997",
@@ -42,37 +72,57 @@ export const Dwight_Schrute = {
       address: "University Park, PA, US",
       gpa: "3.0",
       extras: [],
-      coursework: ["Farming 101", "Intro to Business Management"],
+      coursework: {
+        1: { id: 1, title: "Farming 101" },
+        2: { id: 2, title: "Intro to Business Management" },
+      },
     },
-    {
+    2: {
+      id: 2,
       institution: "Scranton High School",
-
       endDate: "1993",
       degree: "High School Diploma",
       address: "63 Mike Munchak Way, Scranton, PA, US",
-      extras: [
-        "Assistant to the class teacher",
-        "Consecutively won the best hall monitor from 1991-1993",
-      ],
+      extras: {
+        1: { id: 1, title: "Assistant to the class teacher" },
+        2: {
+          id: 2,
+          title: "Consecutively won the best hall monitor from 1991-1993",
+        },
+      },
     },
-  ],
+  },
 
-  projects: [
-    {
-      project: "Automated Guest Announcer",
+  projects: {
+    root: {
+      id: "root",
+      title: "(root)",
+      childIds: [1, 2],
+    },
+    1: {
+      title: "Automated Guest Announcer",
       endDate: "April 2020",
-      tasks: [
-        "Built an image recognition model to recognize and announce guests as they entrance a venue.",
-      ],
+      link: "https://github.com/serengil/deepface",
+      accomplishments: {
+        1: {
+          id: 1,
+          title:
+            "Built an image recognition model to recognize and announce guests as they entrance a venue.",
+        },
+      },
     },
-    {
-      project: "Jello Detector",
+    2: {
+      title: "Jello Detector",
       endDate: "2008",
-      tasks: [
-        "Build a device to detect the presence of jello, which has reduced the frequency of office pranks by 20%.",
-      ],
+      accomplishments: {
+        1: {
+          id: 1,
+          title:
+            "Build a device to detect the presence of jello, which has reduced the frequency of office pranks by 20%.",
+        },
+      },
     },
-  ],
+  },
 
   experience: [
     {

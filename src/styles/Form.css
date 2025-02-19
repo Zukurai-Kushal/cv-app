@@ -22,7 +22,7 @@ form h1{
     justify-content: space-between;
 }
 
-#personal-detail-form strong{
+#personal-detail-form strong, #skills-form .form-editor-content strong{
     width: 20ch;
 }
 
@@ -58,12 +58,20 @@ form h1{
     display: flex;
     align-items: center;
     gap: 20px;
-    font-weight: 600;
-    color: dimgray;
 }
 
-.form-side-buttons button svg{
-    fill: dimgray;
+.form-side-buttons button, .form-editor-content button{
+    color: dimgray;
+    font-weight: 600;
+}
+
+.form-side-buttons button:hover,
+.form-editor-content button:hover {
+    color: black;
+}
+
+form svg{
+    fill: currentColor;
 }
 
 .form-content input{
@@ -74,11 +82,11 @@ textarea, input{
     padding: 5px;
 }
 
-.strike-through *{
+.strike-through{
     text-decoration: line-through;
 }
 
-.form-header-button, .form-side-buttons button, .edit-button{
+.form-header-button, .form-side-buttons button, .edit-button, .form-editor-content button{
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -86,24 +94,83 @@ textarea, input{
     padding: 0;
     margin: 0;
     border: none;
-    color: currentColor;
 }
 
-.form-side-buttons button:hover{
-    /* background-color: black; */
-    color: black;
-    font-weight: 600;
-}
-
-.form-side-buttons button svg{
-    color: currentColor;
-}
-
-.form-side-buttons button:hover svg {
-    fill: black;
-}
-
-.form-side-buttons .icon{
+.form-side-buttons .icon, .form-editor-content .icon{
     width: 20px;
 }
 
+form .highlight{
+    color: white;
+    background-color: black;
+    font-weight: 600;
+}
+
+.form-editor{
+    border: 2px dotted dimgray;
+    padding: 10px;
+}
+
+.form-editor .primary-buttons{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.form-editor .primary-buttons button{
+    flex: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-editor .primary-buttons button::before{
+    content: "[";
+    position: relative;
+    left: -25px;
+    transition: 0.1s;
+}
+
+.form-editor .primary-buttons button::after {
+    content: "]";
+    position: relative;
+    right: -25px;
+    transition: 0.1s;
+}
+
+.form-editor .primary-buttons button:hover::before {
+    left: 0px;
+}
+
+.form-editor .primary-buttons button:hover::after {
+    right: 0px;
+}
+
+.form-editor .primary-buttons button:hover{
+    font-weight: 600;
+}
+
+.red-on-hover:hover {
+    color: red !important;
+}
+
+.form-editor-content{
+    padding: 10px;
+}
+
+.form-editor-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-editor-content label , .form-editor-content .list-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: auto;
+}
