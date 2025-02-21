@@ -26,6 +26,31 @@ form h1{
     width: 20ch;
 }
 
+.sortable-list {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sortable-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    /* padding: 5px 0; */
+    /* color: white; */
+    /* background-color: dimgray; */
+    cursor: grab;
+}
+
+.sortable-dragged {
+    /* background-color: black; */
+    /* color: white; */
+    background-color: white;
+    border: 2px solid black;
+}
+
 .edit-button > .icon{
     opacity: 0;
     scale: 0;
@@ -94,6 +119,10 @@ textarea, input{
     padding: 0;
     margin: 0;
     border: none;
+}
+
+.edit-button.highlight .icon{
+    display: none;
 }
 
 .form-side-buttons .icon, .form-editor-content .icon{

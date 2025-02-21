@@ -124,39 +124,101 @@ export const Dwight_Schrute = {
     },
   },
 
-  experience: [
-    {
+  experience: {
+    root: {
+      id: "root",
+      title: "(root)",
+      childIds: [1, 2],
+    },
+
+    1: {
       startDate: "2001",
       endDate: "Present",
       company: "Dunder Mifflin",
       address: "1725 Slough Avenue in Scranton, PA, US",
       title: "Assistant to the Regional Manager",
-      tasks: [
-        "Consistently ranked as the top salesman in the Scranton branch, achieving the highest sales numbers for multiple consecutive years.",
-        "Awarded Employee of the Month several times for outstanding performance and dedication to the company.",
-        "Successfully managed office operations and supported the Regional Manager in various administrative tasks, contributing to the overall efficiency of the branch.",
-      ],
+      accomplishments: {
+        1: {
+          id: 1,
+          title:
+            "Consistently ranked as the top salesman in the Scranton branch, achieving the highest sales numbers for multiple consecutive years.",
+        },
+        2: {
+          id: 2,
+          title:
+            "Awarded Employee of the Month several times for outstanding performance and dedication to the company.",
+        },
+        3: {
+          id: 3,
+          title:
+            "Successfully managed office operations and supported the Regional Manager in various administrative tasks, contributing to the overall efficiency of the branch.",
+        },
+      },
     },
-    {
+
+    2: {
       startDate: "1997",
       endDate: "Present",
       company: "Schrute Farms",
       address: "Rural Rt. 6, Honesdale, PA, US",
       title: "Owner",
-      tasks: [
-        "Implemented sustainable and organic farming practices, resulting in high-quality beet production and increased farm profitability.",
-        "Developed and promoted Schrute Farms as a successful agrotourism destination, attracting visitors for farm tours, bed and breakfast stays, and beet-related activities.",
-      ],
+      accomplishments: {
+        1: {
+          id: 1,
+          title:
+            "Implemented sustainable and organic farming practices, resulting in high-quality beet production and increased farm profitability.",
+        },
+        2: {
+          id: 2,
+          title:
+            "Developed and promoted Schrute Farms as a successful agrotourism destination, attracting visitors for farm tours, bed and breakfast stays, and beet-related activities.",
+        },
+      },
     },
-  ],
+  },
 
   additional: {
-    languages: [
-      "Fluent in English",
-      "Conversational in Germen",
-      "Fluent in Klingon",
-    ],
-    hobbies: ["Bear Watching"],
+    root: {
+      id: "root",
+      title: "(root)",
+      childIds: [1, 2],
+    },
+
+    1: {
+      id: "1",
+      title: "Languages",
+      childIds: [3, 4, 5],
+    },
+
+    2: {
+      id: "2",
+      title: "Hobbies",
+      childIds: [6],
+    },
+
+    3: {
+      id: "3",
+      title: "Fluent in English",
+      childIds: [],
+    },
+
+    4: {
+      id: "4",
+      title: "Conversational in Germen",
+      childIds: [],
+    },
+
+    5: {
+      id: "5",
+      title: "Fluent in Klingon",
+      childIds: [],
+    },
+
+    6: {
+      id: "6",
+      title: "Bear Watching",
+      childIds: [],
+    },
   },
 };
 

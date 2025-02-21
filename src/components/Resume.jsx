@@ -17,7 +17,14 @@ function RightSideSegment({ startDate, endDate, address, link}) {
   </>
 }
 
-function ExperienceSegment({company, startDate, endDate, title, address, tasks}) {
+function ExperienceSegment({ company, startDate, endDate, title, address, accomplishments , hidden}) {
+  if (hidden) {
+    return;
+  }
+  let unhiddenAccomplishments = [];
+  if (accomplishments) {
+    unhiddenAccomplishments = Object.values(accomplishments).filter((accomplishmentObj) => !accomplishmentObj.hidden);
+  }
   return <div className="sub-segment">
     <div className="flex-apart">
       <div className="left-segment">
@@ -29,7 +36,7 @@ function ExperienceSegment({company, startDate, endDate, title, address, tasks})
       </div>
     </div>
     <ul>
-      {tasks.map((task)=><li key={task}>{task}</li>)}
+      {unhiddenAccomplishments.length > 0 && unhiddenAccomplishments.map((accomplishmentObj)=><li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
     </ul>
   </div>;
 }
@@ -83,7 +90,7 @@ function ProjectSegment({ title, endDate, accomplishments ,link }) {
       </div>
     </div>
     <ul>
-      {Object.values(accomplishments).map((accomplishmentObj) => <li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
+      {accomplishments && Object.values(accomplishments).map((accomplishmentObj) => <li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
     </ul>
   </div>
 }
@@ -102,6 +109,23 @@ function Skills({ skills }) {
         !skills[skillId].hidden && <li key={skillId}>{skills[skillId].title}</li>
       ))}
     </ul>
+  )
+}
+
+function Additional({ additional }) {
+  return (
+    <div className="two-col-grid">
+      {additional.root.childIds.map((categoryId) =>
+        !additional[categoryId].hidden &&
+        <Fragment key={categoryId}>
+          <label>
+            {additional[categoryId].title}
+          </label>
+          <ul className="horizontal-list">
+            {additional[categoryId].childIds.map((itemId) => (!additional[itemId].hidden && <li key={itemId}>{additional[itemId].title}</li>))}
+          </ul>
+        </Fragment>)}
+    </div>
   )
 }
 
@@ -150,32 +174,13 @@ export default function Resume({ fullName, email, phone, address, github, linked
       {experience && !experience.hidden && <section>
         <h2>Work Experience</h2>
         <hr />
-        {experience.map((experienceSegment) => <ExperienceSegment {...experienceSegment} key={experienceSegment.company}/>)}
+        {experience.root.childIds.map((experienceId) => <ExperienceSegment {...experience[experienceId]} key={experienceId}/>)}
       </section>}
       
       {additional && !additional.hidden && <section>
         <h2>Additional</h2>
         <hr />
-        <div className="two-col-grid">
-          {additional.languages && additional.languages.length > 0 && <>
-            <label>Languages:</label>
-            <ul className="horizontal-list">
-              {additional.languages.map((language) => <li key={language}>{language}</li>)}
-            </ul>
-          </>}
-          {additional.certifications && additional.certifications.length > 0 && <>
-            <label>Certifications:</label>
-            <ul className="horizontal-list">
-              {additional.certifications.map((certification) => <li key={certification}>{certification}</li>)}
-            </ul>
-          </>}
-          {additional.hobbies && additional.hobbies.length > 0 && <>
-            <label>Hobbies:</label>
-            <ul className="horizontal-list">
-              {additional.hobbies.map((hobby) => <li key={hobby}>{hobby}</li>)}
-            </ul>
-          </>}
-        </div>
+        <Additional additional={additional} />
       </section>}
     </div>
   );
