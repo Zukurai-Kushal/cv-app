@@ -269,9 +269,9 @@ export default function Form({ resumeData, setResumeData }) {
                 <label className="flex-apart"><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName} onChange={handleInputChange} /></label>
                 <label className="flex-apart"><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email} onChange={handleInputChange} /></label>
                 <label className="flex-apart"><strong>Phone Number: </strong> <input type="tel" name="phone" placeholder="Phone Number" value={resumeData.phone} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Address: </strong> <input type="text" name="address" placeholder="Address" value={resumeData.address} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn" value={resumeData.linkedIn} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub" value={resumeData.github} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github} onChange={handleInputChange} /></label>
                 <label className="flex-apart"><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link} onChange={handleInputChange} /></label>
             </FormSection>
 
@@ -285,7 +285,12 @@ export default function Form({ resumeData, setResumeData }) {
                     </button>
                 </>}
             >
-                <textarea name="objective" rows="4" value={resumeData.objective.value} onChange={(e) => setResumeData({ ...resumeData, objective: { ...resumeData.objective, value: e.target.value } })} />
+                <textarea
+                    name="objective"
+                    rows="4"
+                    value={resumeData.objective.value}
+                    placeholder="Description"
+                    onChange={(e) => setResumeData({ ...resumeData, objective: { ...resumeData.objective, value: e.target.value } })} />
             </FormSection>
 
             <FormSection
@@ -349,7 +354,7 @@ export default function Form({ resumeData, setResumeData }) {
                                     <input
                                         type="text"
                                         name={formMetaData.editSkillGroup}
-                                        placeholder="(Technologies)"
+                                        placeholder="Group Title"
                                         value={resumeData.skills[formMetaData.editSkillGroup].title || ""}
                                         onChange={(e) => handleSubSectionInputChange("skills", e)} />
                                 </label>
@@ -438,7 +443,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Institution:</strong>
                                         <input
                                             type="text" name={formMetaData.editEducation}
-                                            placeholder="(Pennsylvania State University)"
+                                            placeholder="Name of Institution"
                                             value={resumeData.education[formMetaData.editEducation].institution || ""}
                                             onChange={(e) => handleSubSectionInputChange("education", e, "institution")}
                                         />
@@ -447,7 +452,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Degree:</strong>
                                         <input
                                             type="text" name={formMetaData.editEducation}
-                                            placeholder="(Bachelor of Business Administration)"
+                                            placeholder="Type of Degree"
                                             value={resumeData.education[formMetaData.editEducation].degree || ""}
                                             onChange={(e) => handleSubSectionInputChange("education", e, "degree")}
                                         />
@@ -456,7 +461,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Major:</strong>
                                         <input
                                             type="text" name={formMetaData.editEducation}
-                                            placeholder="(Major in Marketing)"
+                                            placeholder="Subject Major"
                                             value={resumeData.education[formMetaData.editEducation].subject || ""}
                                             onChange={(e) => handleSubSectionInputChange("education", e, "subject")}
                                         />
@@ -466,7 +471,7 @@ export default function Form({ resumeData, setResumeData }) {
                                             <strong>Start Date:</strong>
                                             <input
                                                 type="text" name={formMetaData.editEducation}
-                                                placeholder="(YYYY)"
+                                                placeholder="Enrollment Date"
                                                 value={resumeData.education[formMetaData.editEducation].startDate || ""}
                                                 onChange={(e) => handleSubSectionInputChange("education", e, "startDate")}
                                             />
@@ -475,7 +480,7 @@ export default function Form({ resumeData, setResumeData }) {
                                             <strong>End Date:</strong>
                                             <input
                                                 type="text" name={formMetaData.editEducation}
-                                                placeholder="(YYYY)"
+                                                placeholder="Graduation Date"
                                                 value={resumeData.education[formMetaData.editEducation].endDate || ""}
                                                 onChange={(e) => handleSubSectionInputChange("education", e, "endDate")}
                                             />
@@ -485,7 +490,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>GPA:</strong>
                                         <input
                                             type="text" name={formMetaData.editEducation}
-                                            placeholder="(3.14)"
+                                            placeholder="GPA Score"
                                             value={resumeData.education[formMetaData.editEducation].gpa || ""}
                                             onChange={(e) => handleSubSectionInputChange("education", e, "gpa")}
                                         />
@@ -494,7 +499,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Address:</strong>
                                         <input
                                             type="text" name={formMetaData.editEducation}
-                                            placeholder="Address of the Institution"
+                                            placeholder="Address of Institution"
                                             value={resumeData.education[formMetaData.editEducation].address || ""}
                                             onChange={(e) => handleSubSectionInputChange("education", e, "address")}
                                         />
@@ -641,10 +646,10 @@ export default function Form({ resumeData, setResumeData }) {
                                         />
                                     </label>
                                     <label>
-                                        <strong>Completion Date:</strong>
+                                        <strong>Date:</strong>
                                         <input
                                             type="text" name={formMetaData.editProject}
-                                            placeholder="Date"
+                                            placeholder="Completion Date"
                                             value={resumeData.projects[formMetaData.editProject].endDate || ""}
                                             onChange={(e) => handleSubSectionInputChange("projects", e, "endDate")}
                                         />
@@ -775,7 +780,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Position:</strong>
                                         <input
                                             type="text" name={formMetaData.editExperience}
-                                            placeholder="Title"
+                                            placeholder="Title of Position"
                                             value={resumeData.experience[formMetaData.editExperience].title || ""}
                                             onChange={(e) => handleSubSectionInputChange("experience", e, "title")}
                                         />
@@ -785,7 +790,7 @@ export default function Form({ resumeData, setResumeData }) {
                                             <strong>Start Date:</strong>
                                             <input
                                                 type="text" name={formMetaData.editExperience}
-                                                placeholder="(YYYY)"
+                                                placeholder="Date of Employment"
                                                 value={resumeData.experience[formMetaData.editExperience].startDate || ""}
                                                 onChange={(e) => handleSubSectionInputChange("experience", e, "startDate")}
                                             />
@@ -794,7 +799,7 @@ export default function Form({ resumeData, setResumeData }) {
                                             <strong>End Date:</strong>
                                             <input
                                                 type="text" name={formMetaData.editExperience}
-                                                placeholder="(YYYY)"
+                                                placeholder="Date of Leave"
                                                 value={resumeData.experience[formMetaData.editExperience].endDate || ""}
                                                 onChange={(e) => handleSubSectionInputChange("experience", e, "endDate")}
                                             />
@@ -804,7 +809,7 @@ export default function Form({ resumeData, setResumeData }) {
                                         <strong>Address:</strong>
                                         <input
                                             type="text" name={formMetaData.editExperience}
-                                            placeholder="Address of the Company"
+                                            placeholder="Address of Company"
                                             value={resumeData.experience[formMetaData.editExperience].address || ""}
                                             onChange={(e) => handleSubSectionInputChange("experience", e, "address")}
                                         />
@@ -921,7 +926,7 @@ export default function Form({ resumeData, setResumeData }) {
                                     <input
                                         type="text"
                                         name={formMetaData.editAdditional}
-                                        placeholder="(Languages)"
+                                        placeholder="Category Title"
                                         value={resumeData.additional[formMetaData.editAdditional].title || ""}
                                         onChange={(e) => handleSubSectionInputChange("additional", e)} />
                                 </label>
