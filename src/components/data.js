@@ -305,6 +305,7 @@ export const Kushal = {
   },
 
   skills: {
+    showGrouping: true,
     root: {
       id: "root",
       title: "(root)",

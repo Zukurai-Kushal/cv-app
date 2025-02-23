@@ -98,7 +98,7 @@ function ProjectSegment({ title, endDate, accomplishments ,link }) {
 function Skills({ skills }) {
   return (skills.showGrouping ? <div className="two-col-grid">
     {skills.root.childIds.map((groupId) => !skills[groupId].hidden && <Fragment key={groupId}>
-      <label>{skills[groupId].title}</label>
+      <label>{skills[groupId].title}:</label>
       <ul className="horizontal-list">
         {skills[groupId].childIds.map((skillId) => (!skills[skillId].hidden && <li key={skillId}>{skills[skillId].title}</li>))}
       </ul>
@@ -119,7 +119,7 @@ function Additional({ additional }) {
         !additional[categoryId].hidden &&
         <Fragment key={categoryId}>
           <label>
-            {additional[categoryId].title}
+            {additional[categoryId].title}:
           </label>
           <ul className="horizontal-list">
             {additional[categoryId].childIds.map((itemId) => (!additional[itemId].hidden && <li key={itemId}>{additional[itemId].title}</li>))}
