@@ -955,7 +955,7 @@ export default function Form({ resumeData, setResumeData }) {
                                     {resumeData.additional[formMetaData.editAdditional].hidden ? "Show" : "Hide"}
                                 </button>
                                 <button onClick={() => {
-                                    setFormMetaData({ ...formMetaData, ed: undefined })
+                                    setFormMetaData({ ...formMetaData, editAdditional: undefined })
                                 }}>Close</button>
                             </div>
                         </div>}
