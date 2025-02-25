@@ -266,13 +266,13 @@ export default function Form({ resumeData, setResumeData }) {
                 formMetaData={formMetaData} setFormMetaData={setFormMetaData}
                 showFormSection="showPersonalDetail" title="Personal Detail" id="personal-detail-form"
             >
-                <label className="flex-apart"><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Phone Number: </strong> <input type="tel" name="phone" placeholder="Phone Number" value={resumeData.phone} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Phone Number: </strong> <input type="tel" name="phone" placeholder="Phone Number" value={resumeData.phone || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github || ""} onChange={handleInputChange} /></label>
+                <label className="flex-apart"><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link || ""} onChange={handleInputChange} /></label>
             </FormSection>
 
             <FormSection
@@ -288,7 +288,7 @@ export default function Form({ resumeData, setResumeData }) {
                 <textarea
                     name="objective"
                     rows="4"
-                    value={resumeData.objective.value}
+                    value={resumeData.objective.value || ""}
                     placeholder="Description"
                     onChange={(e) => setResumeData({ ...resumeData, objective: { ...resumeData.objective, value: e.target.value } })} />
             </FormSection>
@@ -347,7 +347,7 @@ export default function Form({ resumeData, setResumeData }) {
                         )
                         }
                     
-                        {formMetaData.editSkillGroup && <div className={"form-editor"}>
+                        {resumeData.skills[formMetaData.editSkillGroup] && <div className={"form-editor"}>
                             <div className="form-editor-content">
                                 <label>
                                     <strong>Skill Group:</strong>
@@ -436,7 +436,7 @@ export default function Form({ resumeData, setResumeData }) {
                             </button>
                         )}
 
-                        {formMetaData.editEducation &&
+                        {resumeData.education[formMetaData.editEducation] &&
                             <div className="form-editor">
                                 <div className="form-editor-content">
                                     <label>
@@ -633,7 +633,7 @@ export default function Form({ resumeData, setResumeData }) {
                             </button>
                         )}
                     
-                        {formMetaData.editProject &&
+                        {resumeData.projects[formMetaData.editProject] &&
                             <div className="form-editor">
                                 <div className="form-editor-content">
                                     <label>
@@ -764,7 +764,7 @@ export default function Form({ resumeData, setResumeData }) {
                             </button>
                         )}
 
-                        {formMetaData.editExperience &&
+                        {resumeData.experience[formMetaData.editExperience] &&
                             <div className="form-editor">
                                 <div className="form-editor-content">
                                     <label>
@@ -919,7 +919,7 @@ export default function Form({ resumeData, setResumeData }) {
                         )
                         }
                     
-                        {formMetaData.editAdditional && <div className={"form-editor"}>
+                        {resumeData.additional[formMetaData.editAdditional] && <div className={"form-editor"}>
                             <div className="form-editor-content">
                                 <label>
                                     <strong>Category:</strong>

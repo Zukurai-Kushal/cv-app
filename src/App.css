@@ -39,6 +39,10 @@ body{
   width: 21cm;
 }
 
+.icon {
+  width: 30px;
+}
+
 header{
   display: flex;
   justify-content: center;
@@ -50,8 +54,77 @@ header h1{
   font-size: 20px;
 }
 
-.icon{
-  width: 30px;
+.resume-manager{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  gap: 10px;
+  --minIconSize: 25px;
+  --maxIconSize: 35px;
+}
+
+.resume-manager > div{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.resume-manager button {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: dimgray;
+  width: var(--maxIconSize);
+  height: var(--maxIconSize);
+}
+
+.resume-manager button .icon{
+  transition: 0.1s;
+}
+
+.resume-manager button:hover, .resume-manager button.highlight{
+  color: black;
+}
+
+.resume-manager .icon{
+  width: var(--minIconSize);
+}
+
+.resume-manager button:hover .icon, .resume-manager button.highlight .icon{
+  transform: scale(1.5);
+}
+
+.resume-manager .icon{
+  fill: currentColor;
+}
+
+.red-on-hover:hover {
+  color: red !important;
+}
+
+.mobile-print-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 20ch;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.mobile-print-button .icon{
+  fill:currentColor;
 }
 
 @media (min-width: 1200px) {
@@ -59,6 +132,10 @@ header h1{
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+  }
+
+  .mobile-print-button{
+    display: none;
   }
 }
 

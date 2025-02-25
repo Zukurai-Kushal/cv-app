@@ -49,6 +49,7 @@ form h1{
     /* color: white; */
     background-color: white;
     border: 2px solid black;
+    cursor: grabbing;
 }
 
 .edit-button > .icon{
@@ -181,10 +182,6 @@ form .highlight{
 
 .form-editor .primary-buttons button:hover{
     font-weight: 600;
-}
-
-.red-on-hover:hover {
-    color: red !important;
 }
 
 .form-editor-content{
