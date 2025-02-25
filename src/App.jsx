@@ -135,7 +135,13 @@ export default function App() {
         <Form resumeData={resumeData} setResumeData={setResumeData}/>
       </div>
       <div ref={contentRef}><Resume {...resumeData} /></div>
-      <button className='mobile-print-button'>Print <Icon src={printIcon} type={"svg"}/></button>
+      <button
+        className='mobile-print-button'
+        title='Print Resume'      
+        onClick={() => reactToPrintFn()}
+      >
+        Print <Icon src={printIcon} type={"svg"} />
+      </button>
     </div>
   </>
 }
