@@ -131,7 +131,7 @@ function Additional({ additional }) {
 
 export default function Resume({ fullName, email, phone, address, github, linkedIn, link, objective, skills, education, projects, experience, additional }) {
   return (
-    <div id="resume" style={{ transform: "scale(" + (getZoomLevel()) +")"}}>
+    <div id="resume">
       <div className="flex-apart">
         <h1>{fullName}</h1>
         <div className="links">
@@ -204,8 +204,8 @@ function getZoomLevel() {
 function adjustZoom() {
   var zoomLevel = getZoomLevel();
   // stop zooming when book fits page
-  if (!document.querySelector("#resume")) return;
-  document.querySelector("#resume").style.transform = "scale(" + zoomLevel + ")";
+  // if (!document.querySelector("#resume")) return;
+  document.querySelector("body").style.transform = "scale(" + zoomLevel + ")";
 }
-
+adjustZoom();
 window.addEventListener("resize", adjustZoom);

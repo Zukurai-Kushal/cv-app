@@ -29,6 +29,12 @@ body{
   color: black;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  transform-origin: top center;
 }
 
 #content{
@@ -40,7 +46,12 @@ body{
 }
 
 #UI{
-  max-width: 21cm;
+  width: 21cm;
+  margin: 1cm 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .icon {
