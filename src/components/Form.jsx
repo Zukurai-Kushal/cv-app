@@ -266,13 +266,13 @@ export default function Form({ resumeData, setResumeData }) {
                 formMetaData={formMetaData} setFormMetaData={setFormMetaData}
                 showFormSection="showPersonalDetail" title="Personal Detail" id="personal-detail-form"
             >
-                <label className="flex-apart"><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Phone Number: </strong> <input type="tel" name="phone" placeholder="Phone Number" value={resumeData.phone || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github || ""} onChange={handleInputChange} /></label>
-                <label className="flex-apart"><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link || ""} onChange={handleInputChange} /></label>
+                <label><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName || ""} onChange={handleInputChange} /></label>
+                <label><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email || ""} onChange={handleInputChange} /></label>
+                <label><strong>Phone Number: </strong> <input type="tel" name="phone" placeholder="Phone Number" value={resumeData.phone || ""} onChange={handleInputChange} /></label>
+                <label><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address || ""} onChange={handleInputChange} /></label>
+                <label><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn || ""} onChange={handleInputChange} /></label>
+                <label><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github || ""} onChange={handleInputChange} /></label>
+                <label><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link || ""} onChange={handleInputChange} /></label>
             </FormSection>
 
             <FormSection

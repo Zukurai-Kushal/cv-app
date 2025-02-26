@@ -130,9 +130,8 @@ function Additional({ additional }) {
 }
 
 export default function Resume({ fullName, email, phone, address, github, linkedIn, link, objective, skills, education, projects, experience, additional }) {
-
   return (
-    <div className="resume">
+    <div id="resume" style={{ transform: "scale(" + (getZoomLevel()) +")"}}>
       <div className="flex-apart">
         <h1>{fullName}</h1>
         <div className="links">
@@ -184,4 +183,29 @@ export default function Resume({ fullName, email, phone, address, github, linked
       </section>}
     </div>
   );
+
 }
+
+function getZoomLevel() {
+  var documentWidth = window.innerWidth;
+  var documentHeight = window.innerHeight;
+  // 1cm = 37.795276px;
+  // 21cm width + 1cm of margins each sides
+  // 29.7cm height + 1cm of margins each sides
+  var zoomWidth = documentWidth / (21 * 37.795276);
+  var zoomHeight = documentHeight / (29.7 * 37.795276);
+  var zoomLevel = Math.min(zoomWidth, zoomHeight);
+  if (documentWidth > 800 || zoomLevel > 1) {
+    zoomLevel = 1
+  }
+  return (zoomLevel);
+}
+
+function adjustZoom() {
+  var zoomLevel = getZoomLevel();
+  // stop zooming when book fits page
+  if (!document.querySelector("#resume")) return;
+  document.querySelector("#resume").style.transform = "scale(" + zoomLevel + ")";
+}
+
+window.addEventListener("resize", adjustZoom);

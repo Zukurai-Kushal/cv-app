@@ -1,87 +1,92 @@
-.resume .link-container{
+#resume .link-container{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.resume .link-container .icon{
+#resume .link-container .icon{
     width: 15px;
 }
 
-.resume hr{
+#resume hr{
     border: 1px solid black;
     border-bottom: none;
 }
 
-.resume{
+#resume{
     background: white;
     color: black;
     display: block;
-    padding: 2cm;
     width: 21cm;
-    aspect-ratio: 1/1.414;
+    height: 29.7cm;
+    padding: 2cm;
+    position: relative;
+    font-size: 12px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     font-family: "Inclusive Sans", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
 }
 
-.resume h1{
+#resume h1{
     font-family: "Cutive Mono", serif;
     font-weight: 400;
     font-style: normal;
     font-size: 40px;
 }
 
-.resume h2{
+#resume h2{
     font-weight: 300;
     font-size: 20px;
 }
 
-.resume h3{
+#resume h3{
     font-weight: 600;
 }
 
-.resume strong{
+#resume strong{
     font-weight: 500;
 }
 
-.resume em{
+#resume em{
     font-weight: 500;
 }
 
-.resume a, .resume .link-container{
+#resume a, #resume .link-container{
     text-decoration: none;
     color: black;
     font-size: 10px;
 }
 
-.resume a:hover{
+#resume a:hover{
     text-decoration: underline;
 }
 
-.resume section{
+#resume section{
     margin-bottom: 1mm;
 
 }
 
-.resume .right-segment{
+#resume .right-segment{
     font-weight: 500;
 }
 
-.resume .sub-segment{
+#resume .sub-segment{
     margin: 1mm 0;
 }
 
 @media print {
     html,
     body {
-        height: 100vh;
+        width: 21cm;
+        height: 29.7cm;
         /* Use 100% here to support printing more than a single page*/
         margin: 0 !important;
         padding: 0 !important;
         overflow: hidden;
+    }
+    #resume{
+        transform: scale(1) !important;
     }
 }

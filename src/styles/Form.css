@@ -25,6 +25,11 @@ form h1{
 #personal-detail-form strong, #skills-form .form-editor-content strong{
     width: 20ch;
 }
+#personal-detail-form .form-content label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
 .sortable-list {
     user-select: none;
@@ -199,4 +204,10 @@ form .highlight{
     flex-direction: column;
     gap: 5px;
     flex: auto;
+}
+
+@media (min-width: 1200px) {
+    #personal-detail-form .form-content label{
+        flex-direction: row;
+    }
 }
