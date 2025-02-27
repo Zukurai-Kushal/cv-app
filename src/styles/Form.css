@@ -208,7 +208,7 @@ form .highlight{
     flex: auto;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
     #personal-detail-form .form-content label{
         flex-direction: row;
     }

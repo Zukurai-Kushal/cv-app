@@ -32,7 +32,6 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
   height: 100vh;
   transform-origin: top center;
 }
@@ -47,6 +46,7 @@ body{
 
 #UI{
   width: 21cm;
+  flex: initial;
   margin: 1cm 0;
   position: relative;
   display: flex;
