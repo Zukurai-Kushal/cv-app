@@ -27,6 +27,7 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    overflow: hidden;
 }
 
 #resume h1{
@@ -88,5 +89,13 @@
     }
     #resume{
         transform: scale(1) !important;
+        width: 21cm;
+        height: 29.7cm;
+        position: absolute;
+        left: 0;
+        top: 0;
+        /* Use 100% here to support printing more than a single page*/
+        overflow: hidden;
+        box-shadow: none;
     }
 }
