@@ -80,8 +80,8 @@
 @media print {
     html,
     body {
-        width: 21cm;
-        height: 29.7cm;
+        width: 100vw;
+        height: 100vh;
         /* Use 100% here to support printing more than a single page*/
         margin: 0 !important;
         padding: 0 !important;
@@ -89,8 +89,8 @@
     }
     #resume{
         transform: scale(1) !important;
-        width: 21cm;
-        height: 29.7cm;
+        width: 100vw;
+        height: 100vh;
         position: absolute;
         left: 0;
         top: 0;
