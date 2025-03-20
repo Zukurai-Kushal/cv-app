@@ -20,5 +20,9 @@
 - React Framework: Gained experience in building dynamic applications using React.
 - useState and useEffect Hooks: Learned to manage state and side effects in functional components.
 
+## Live Preview
+
+Click [here](https://myresumewriter.netlify.app/) to view the live page.
+
 > [!WARNING]
 > The application is intended for desktop use only; mobile or tablet use is not supported.
