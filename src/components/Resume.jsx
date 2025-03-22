@@ -79,7 +79,14 @@ function EducationSegment({ institution, startDate, endDate, degree, subject, ad
   </div>;
 }
 
-function ProjectSegment({ title, endDate, accomplishments ,link }) {
+function ProjectSegment({ title, endDate, accomplishments, link, hidden }) {
+  if (hidden) {
+    return;
+  }
+  let unhiddenAccomplishments = [];
+  if (accomplishments) {
+    unhiddenAccomplishments = Object.values(accomplishments).filter((accomplishmentObj) => !accomplishmentObj.hidden);
+  }
   return <div className="sub-segment">
     <div className="flex-apart">
       <div className="left-segment">
@@ -90,7 +97,7 @@ function ProjectSegment({ title, endDate, accomplishments ,link }) {
       </div>
     </div>
     <ul>
-      {accomplishments && Object.values(accomplishments).map((accomplishmentObj) => <li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
+      {unhiddenAccomplishments.length > 0 && unhiddenAccomplishments.map((accomplishmentObj)=><li key={accomplishmentObj.id}>{accomplishmentObj.title}</li>)}
     </ul>
   </div>
 }
