@@ -6,6 +6,8 @@ export const Clear_State = {
   github: "",
   address: "",
   link: "",
+  hideLinks: undefined,
+  showQR: undefined,
   objective: {},
 
   skills: {

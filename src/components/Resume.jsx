@@ -5,6 +5,7 @@ import linkedInLogo from "../assets/linkedin.svg"
 import linkIcon from "../assets/link.svg"
 import addressIcon from "../assets/pin.svg"
 import Icon from "./Icon"
+import QRCode from "react-qr-code";
 
 import "../styles/Resume.css"
 import { Fragment } from "react"
@@ -136,19 +137,27 @@ function Additional({ additional }) {
   )
 }
 
-export default function Resume({ fullName, email, phone, address, github, linkedIn, link, objective, skills, education, projects, experience, additional }) {
+export default function Resume({ fullName, email, phone, address, github, linkedIn, link, objective, skills, education, projects, experience, additional, hideLinks, showQR}) {
   return (
     <div id="resume" style={{ transform: "scale(" + (getZoomLevel()) +")"}}>
       <div className="flex-apart">
         <h1>{fullName}</h1>
-        <div className="links">
-          {email && <a href={"mailto:" + email} title="Email" className="link-container"><Icon src={emailIcon}/>{email}</a>}
-          {phone && <a href={"tel:" + phone} title="Phone Number" className="link-container"><Icon src={phoneIcon} />{phone}</a>}
-          {address && <address className="link-container"><Icon src={addressIcon}/> {address}</address>}
-          {github && <a href={github} target="_blank" title="Github Profile" className="link-container"><Icon src={githubLogo}/>{github.replace(/(^\w+:|^)\/\//, '')}</a>}
-          {linkedIn && <a href={linkedIn} target="_blank" title="LinkedIn Profile" className="link-container"><Icon src={linkedInLogo}/>{linkedIn.replace(/(^\w+:|^)\/\/www./, '')}</a>}
-          {link && <a href={link} target="_blank" title="Personal Website" className="link-container"><Icon src={linkIcon} />{link}</a>}
-        </div>
+
+        {showQR && link && <QRCode
+          size={100}
+          value={link}
+        />}
+
+        {!hideLinks &&
+          <div className="links">
+            {email && <a href={"mailto:" + email} title="Email" className="link-container"><Icon src={emailIcon}/>{email}</a>}
+            {phone && <a href={"tel:" + phone} title="Phone Number" className="link-container"><Icon src={phoneIcon} />{phone}</a>}
+            {address && <address className="link-container"><Icon src={addressIcon}/> {address}</address>}
+            {github && <a href={github} target="_blank" title="Github Profile" className="link-container"><Icon src={githubLogo}/>{github.replace(/(^\w+:|^)\/\//, '')}</a>}
+            {linkedIn && <a href={linkedIn} target="_blank" title="LinkedIn Profile" className="link-container"><Icon src={linkedInLogo}/>{linkedIn.replace(/(^\w+:|^)\/\/www./, '')}</a>}
+            {link && <a href={link} target="_blank" title="Personal Website" className="link-container"><Icon src={linkIcon} />{link}</a>}
+          </div>
+        }
       </div>
 
       {objective && !objective.hidden &&

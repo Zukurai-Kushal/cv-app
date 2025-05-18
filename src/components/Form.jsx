@@ -13,6 +13,12 @@ import editIcon from "../assets/edit.svg"
 import deleteIcon from "../assets/delete-outline.svg"
 import sortBeginIcon from "../assets/sort-begin.svg"
 import sortEndIcon from "../assets/sort-end.svg"
+import linkIcon from "../assets/link.svg"
+import linkOffIcon from "../assets/link-off.svg"
+import qrIcon from "../assets/qrcode.svg"
+import qrOffIcon from "../assets/qrcode-scan.svg"
+
+
 
 function FormSection({ formMetaData, setFormMetaData, showFormSection, title, id, children, sideButtons, strikeThrough}) {
     return <section id={id} className={strikeThrough? " strike-through":""}>
@@ -265,6 +271,20 @@ export default function Form({ resumeData, setResumeData }) {
             <FormSection
                 formMetaData={formMetaData} setFormMetaData={setFormMetaData}
                 showFormSection="showPersonalDetail" title="Personal Detail" id="personal-detail-form"
+                sideButtons={<>
+                    <button
+                        title={resumeData.hideLinks ? "Show Links" : "Hide Links"}
+                        onClick={() => setResumeData({ ...resumeData, hideLinks: !resumeData.hideLinks })}
+                    >
+                        <Icon src={resumeData.hideLinks ? linkOffIcon : linkIcon} type={"svg"} />
+                    </button>
+                    <button
+                        title={resumeData.showQR ? "Hide QR Code (Personal Website)" : "Show QR Code (Personal Website)"}
+                        onClick={() => setResumeData({ ...resumeData, showQR: !resumeData.showQR })}
+                    >
+                        <Icon src={resumeData.showQR ? qrIcon : qrOffIcon} type={"svg"} />
+                    </button>
+                </>}
             >
                 <label><strong>Full Name: </strong> <input type="text" name="fullName" placeholder="Full Name" value={resumeData.fullName || ""} onChange={handleInputChange} /></label>
                 <label><strong>Email: </strong> <input type="email" name="email" placeholder="Email" value={resumeData.email || ""} onChange={handleInputChange} /></label>
@@ -272,7 +292,10 @@ export default function Form({ resumeData, setResumeData }) {
                 <label><strong>Address: </strong> <input type="text" name="address" placeholder="Home Address" value={resumeData.address || ""} onChange={handleInputChange} /></label>
                 <label><strong>LinkedIn: </strong> <input type="url" name="linkedIn" placeholder="LinkedIn Profile" value={resumeData.linkedIn || ""} onChange={handleInputChange} /></label>
                 <label><strong>GitHub: </strong> <input type="url" name="github" placeholder="GitHub Profile" value={resumeData.github || ""} onChange={handleInputChange} /></label>
-                <label><strong>Personal Website: </strong> <input type="url" name="link" placeholder="Personal Website" value={resumeData.link || ""} onChange={handleInputChange} /></label>
+                <label>
+                    <strong>Personal Website: </strong>
+                    <input type="url" name="link" placeholder="Personal Website" value={resumeData.link || ""} onChange={handleInputChange} />
+                </label>
             </FormSection>
 
             <FormSection
