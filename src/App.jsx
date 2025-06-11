@@ -134,7 +134,7 @@ export default function App() {
         
         <Form resumeData={resumeData} setResumeData={setResumeData}/>
       </div>
-      <div ref={contentRef}><Resume {...resumeData} /></div>
+      <div id="resume-sticky-container" ref={contentRef}><Resume {...resumeData} /></div>
       <button
         className='mobile-print-button'
         title='Print Resume'      
